@@ -8,7 +8,6 @@ This repository contains the practices for the SQL concepts taught in the course
 Data Source: parch and posey 
 
 >You can restore the toy dataset  "parch and posey" to your local machines from the file **parch_and_posey_db** using the following steps:
-
 >1. Open Terminal.
 >2. Enter PostgreSQL console - `psql` 
 >3. Create a new database - `CREATE DATABASE parch_and_posey;`
@@ -24,4 +23,4 @@ Topics:
 ---
 This repository also contains a sub-repo for my notes & practices for the PostgreSQL from other resources 
 
-[Other PostgreSQL Notes & Practices](https://github.com/dylan-kuo/SQL-for-Data-Analysis/tree/master/postgresql-sandbox)
+[PostgreSQL Notes & Practices](https://github.com/dylan-kuo/SQL-for-Data-Analysis/tree/master/postgresql-sandbox)
