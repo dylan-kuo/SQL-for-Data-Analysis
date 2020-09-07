@@ -7,11 +7,11 @@ This repository contains the practices for the SQL concepts taught in the course
 
 ### Dataset: parch and posey 
 
->You can restore the toy dataset  "parch and posey" to your local machines from the file **parch_and_posey_db** using the following steps:
->1. Open Terminal.
->2. Enter PostgreSQL console - `psql` 
->3. Create a new database - `CREATE DATABASE parch_and_posey;`
->4. Restore into the database - `pg_restore -d parch_and_posey /path/to/parch_and_posey_db`
+You can restore the toy dataset  "parch and posey" to your local machines from the file **parch_and_posey_db** using the following steps:
+1. Open Terminal.
+2. Enter PostgreSQL console - `psql` 
+3. Create a new database - `CREATE DATABASE parch_and_posey;`
+4. Restore into the database - `pg_restore -d parch_and_posey /path/to/parch_and_posey_db`
 
 
 ### Topics:
