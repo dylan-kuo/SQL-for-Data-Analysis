@@ -15,8 +15,8 @@ WITH cte_film AS (
 	SELECT film_id, 
 	       title, 
 	       (CASE
-		   		WHEN length < 30 THEN 'Short'
-		        WHEN length < 90 THEN 'Medium'
+		    WHEN length < 30 THEN 'Short'
+		    WHEN length < 90 THEN 'Medium'
 	            ELSE 'Long'
 	        END) length
 	FROM film	
@@ -53,9 +53,9 @@ USING (staff_id);
 -- Ex 3. Using CTE with a window function example
 WITH cte_film AS (
 	SELECT film_id, title, rating, length, 
-		   RANK() OVER (
-		   		PARTITION BY rating
-		        ORDER BY length DESC) length_rank
+               RANK() OVER (
+	           PARTITION BY rating
+		   ORDER BY length DESC) length_rank
 	FROM film	
 )
 SELECT *
