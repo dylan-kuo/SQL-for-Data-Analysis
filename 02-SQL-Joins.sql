@@ -11,8 +11,8 @@ ON orders.account_id = accounts.id
 
 SELECT orders.standard_qty, 
        orders.gloss_qty, 
-	   accounts.website, 
-	   accounts.primary_poc
+       accounts.website, 
+       accounts.primary_poc
 FROM orders
 JOIN accounts
 ON orders.account_id = accounts.id
