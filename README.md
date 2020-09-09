@@ -17,6 +17,7 @@ You can restore the toy dataset  "parch and posey" to your local machines from t
 ### Topics:
 
 [01-SQL-Basics](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/01-Basic-SQL.sql)
+
 [02-SQL-Joins](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/02-SQL-Joins.sql)
 
 
