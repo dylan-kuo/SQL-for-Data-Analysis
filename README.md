@@ -20,6 +20,8 @@ You can restore the toy dataset  "parch and posey" to your local machines from t
 
 [02-SQL-Joins](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/02-SQL-Joins.sql)
 
+[03-SQL-Aggregations](https://nbviewer.jupyter.org/github/dylan-kuo/SQL-for-Data-Analysis/blob/master/03-SQL-Aggregations.sql)
+
 
 
 
