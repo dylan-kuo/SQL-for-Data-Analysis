@@ -91,8 +91,8 @@ Refernece: Tree data structure terminology http://ceadserv1.nku.edu/longa//class
 WITH join_table AS(
   SELECT a.node a_node,
          a.parent a_parent,
-		 b.node b_node,
-		 b.parent b_parent
+	 b.node b_node,
+	 b.parent b_parent
   FROM tree a
   LEFT JOIN tree b
   ON a.parent = b.node
@@ -102,13 +102,12 @@ SELECT
   a_node node,
   CASE
       WHEN b.node IS NULL AND b_parent IS NULL THEN 'Root'
-	  WHEN b.node IS NOT NULL AND b_parent IS NOT NULL THEN 'Leaf'
-	  ELSE 'Inner'
+      WHEN b.node IS NOT NULL AND b_parent IS NOT NULL THEN 'Leaf'
+      ELSE 'Inner'
 FROM join_table
 
 
 -- #2 Alternative solution (more generalizable solution ) without explicit joins:
-
 
 SELECT 
     node, 
@@ -166,9 +165,9 @@ GROUP BY DATE_TRUNC('month', a.date)
 
 WITH DistinctMonthlyUser AS (
     SELECT DISTINCT 
-	  DATE_TRUNC('month', date) month_timestamp,
-	  user_id
-	FROM logins
+      DATE_TRUNC('month', date) month_timestamp,
+      user_id
+    FROM logins
 )
 
 SELECT 
