@@ -271,7 +271,7 @@ ORDER BY date ASC
 -- Alternative solusion using window function (more efficient!)
 SELECT 
     date,
-	SUM(cash_flow) OVER (ORDER BY date ASC) as cumulative_cf
+    SUM(cash_flow) OVER (ORDER BY date ASC) as cumulative_cf
 FROM transactions
 ORDER BY date ASC
 
