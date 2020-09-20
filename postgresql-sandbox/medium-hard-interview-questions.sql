@@ -112,11 +112,11 @@ FROM join_table
 
 SELECT 
     node, 
-	CASE
-	    WHEN parent IS NULL THEN 'Root'
-		WHEN node NOT IN 
-		    (SELECT parent FROM TREE WHERE parent IS NOT NULL) THEN 'Leaf'
-		WHEN node IN (SELECT parent FROM tree) AND parent IS NOT NULL THEN 'Inner'
+    CASE
+        WHEN parent IS NULL THEN 'Root'
+	WHEN node NOT IN 
+            (SELECT parent FROM TREE WHERE parent IS NOT NULL) THEN 'Leaf'
+	WHEN node IN (SELECT parent FROM tree) AND parent IS NOT NULL THEN 'Inner'
     END AS label	
 FROM tree
 
@@ -134,8 +134,6 @@ Context: Say we have login data in the table logins:
 | 1       | 2018-07-02 |
 | ...     | ...        |
 | 234     | 2018-10-04 |
-
-
 
 
 
