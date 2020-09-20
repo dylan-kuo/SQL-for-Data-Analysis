@@ -122,7 +122,8 @@ FROM tree
 
 /* --------------------------------------------------------------------------
 #3: Retained Users Per Month (multi-part)
-Part 1: 
+
+
 Context: Say we have login data in the table logins: 
 
 | user_id | date       |
@@ -136,7 +137,7 @@ Context: Say we have login data in the table logins:
 
 
 
-PART 1:
+PART 1 - RETENTION
 
 Task: Write a query that gets the number of retained users per month. 
       In this case, retention for a given month is defined as the number of users 
@@ -147,7 +148,7 @@ Reference: https://www.sisense.com/blog/use-self-joins-to-calculate-your-retenti
 */
 
 
--- #3 Solution:
+-- Solution:
 SELECT
   DATE_TRUNC('month', a.date) month_timestamp,
   COUNT(DISTINCT a.user_id) retained_users
@@ -158,7 +159,7 @@ ON a.user_id = b.user_id
 GROUP BY DATE_TRUNC('month', a.date)
 
 
--- #3 Alternative solution
+-- Alternative solution
 -- NOTE: De-duping user-login pairs before the self-join would make the solution more efficient (see below)
 --       De-duping logins would also make the given solution to Part 2 and 3 of this problem more efficient as well.
 
@@ -179,13 +180,99 @@ ON CurrentMonth.month_timestamp = PriorMonth + interval '1 month'
   AND CurrentMonth.user_id = PriorMonth.user_id
 
 
+/* PART 2 - CHURN
+*Task:* Now we’ll take retention and turn it on its head: 
+        Write a query to find many users last month did not come back this month. 
+		i.e. the number of churned users.  
+*/
+
+-- Solution
+
+SELECT 
+    DATE_TRUNC('month', a.date) month_timestamp,
+	COUNT(DISTINCT b.user_id) churned_users
+FROM logins a
+FULL OUTER JOIN logins b
+ON a.user_id = b.user_id
+  AND DATE_TRUNC('month', a.date) = DATE_TRUNC('month', b.date) + interval '1 month'
+WHERE a.user_id IS NULL
+GROUP BY DATE_TRUNC('month', a.date)
+
+
+/* PART 3 - REACTIVATION
+*Context*: You now want to see the number of active users this month who have been reactivated 
+            — in other words, users who have churned but this month they became active again. 
+			Keep in mind a user can reactivate after churning before the previous month. 
+			An example of this could be a user active in February (appears in logins), 
+			no activity in March and April, but then active again in May (appears in logins), 
+			so they count as a reactivated user for May . 
+			
+*Task:* Create a table that contains the number of reactivated users per month. 
+*/ 
+
+-- Solution
+
+SELECT 
+  DATE_TRUNC('month', a.date) month_timestamp,
+  COUNT(DISTINCT a.user_id) reactivated_users,
+  MAX(DATE_TRUNC('month', b.date)) most_recent_active_previously
+FROM logins a
+JOIN logins b
+ON a.user_id = b.user_id
+  AND DATE_TRUNC('month', a.date) > DATE_TRUNC('month', b.date)
+GROUP BY DATE_TRUNC('month', a.date)
+HAVING month_timestamp > most_recent_active_previously + interval '1 month'
 
 
 
+/*
+#4: Cumulative Sums 
+
+*Acknowledgement:* This problem was inspired by Sisense’s“Cash Flow modeling in SQL” 
+                   (https://www.sisense.com/blog/cash-flow-modeling-in-sql/) blog post 
+
+*Context:* Say we have a table transactions in the form:
+
+| date       | cash_flow |
+|------------|-----------|
+| 2018-01-01 | -1000     |
+| 2018-01-02 | -100      |
+| 2018-01-03 | 50        |
+| ...        | ...       |
 
 
+Where cash_flow is the revenues minus costs for each day. 
+
+*Task: *Write a query to get cumulative cash flow for each day such that we end up with a table in the form below: 
+
+| date       | cumulative_cf |
+|------------|---------------|
+| 2018-01-01 | -1000         |
+| 2018-01-02 | -1100         |
+| 2018-01-03 | -1050         |
+| ...        | ...           |
+ 
+ 
+ REFERENCE: window funciton https://www.postgresql.org/docs/9.1/tutorial-window.html
+*/
 
 
+-- Solution 
 
+SELECT a.date,
+       SUM(b.cash_flow) as cumulative_cf
+FROM transactions a
+JOIN transactions b 
+ON a.date >= b.date 
+GROUP BY a.date
+ORDER BY date ASC  
+
+
+-- Alternative solusion using window function (more efficient!)
+SELECT 
+    date,
+	SUM(cash_flow) OVER (ORDER BY date ASC) as cumulative_cf
+FROM transactions
+ORDER BY date ASC
 
 
