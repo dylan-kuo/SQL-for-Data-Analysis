@@ -151,4 +151,43 @@ INNER JOIN product_groups USING (group_id)
 
 
 
+/*
+LAG() function has the ability to access data from the previous row, 
+while the LEAD() function can access data from the next row.
+*/
+
+-- LAG()
+
+SELECT 
+      product_name,
+	  group_name,
+	  price,
+	  LAG(price, 1) OVER (
+	      PARTITION BY group_name
+		  ORDER BY price
+	  ) AS prev_price,
+	  price - LAG(price, 1) OVER (
+	      PARTITION BY group_name
+		  ORDER BY price
+	  ) AS cur_prev_diff
+FROM products
+INNER JOIN product_groups USING (group_id)
+
+
+-- LEAD()
+
+SELECT 
+      product_name,
+	  group_name,
+	  price,
+	  LEAD (price, 1) OVER (
+	      PARTITION BY group_name
+		  ORDER BY price
+	  ) AS next_price,
+	  price - LEAD(price, 1) OVER (
+	      PARTITION BY group_name
+		  ORDER BY price
+	  ) AS cur_next_diff
+FROM products
+INNER JOIN product_groups USING (group_id)
 
