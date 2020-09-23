@@ -11,6 +11,7 @@ Topics:
 
 - [CASE](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/case.sql)
 - [Common Table Expressions (CTE)](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/cte.sql)
+- [Window Functions](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/window_function.sql)
 
 
 
