@@ -74,4 +74,68 @@ The ROW_NUMBER(), RANK(), and DENSE_RANK() functions assign an integer
 to each row based on its order in its result set.
 */
 
+-- ROW_NUMBER() function assigns a sequential number to each row in each partition 
+SELECT 
+      product_name, 
+	  group_name,
+	  price,
+	  ROW_NUMBER() OVER (
+	      PARTITION BY group_name
+		  ORDER BY price
+	  )
+FROM products
+INNER JOIN product_groups USING (group_id)
+
+
+-- RANK() function assigns ranking within an ordered partition
+SELECT 
+      product_name,
+	  group_name,
+	  price,
+	  RANK() OVER (
+	      PARTITION BY group_name
+		  ORDER BY price
+	  )
+FROM products
+INNER JOIN product_groups USING (group_id)
+
+
+-- Similar to the RANK() function, the DENSE_RANK() function assigns a rank 
+-- to each row within an ordered partition, but the ranks have no gap
+SELECT 
+      product_name,
+	  group_name,
+	  price,
+	  DENSE_RANK() OVER (
+	      PARTITION BY group_name
+		  ORDER BY price
+	  )
+FROM products
+INNER JOIN product_groups USING (group_id)
+
+
+
+/*
+The FIRST_VALUE() function returns a value evaluated against the first row within its partition, 
+whereas the LAST_VALUE() function returns a value evaluated against the last row in its partition.
+*/
+
+-- FIRST_VALUE()
+SELECT 
+      product_name,	
+	  group_name,
+	  price,	  
+	  LAST_VALUE(price) OVER (
+	      PARTITION BY group_name
+		  ORDER BY price RANGE BETWEEN UNBOUNDED PRECEDING 
+		                 AND UNBOUNDED FOLLOWING
+	  ) AS lowest_price_per_group
+FROM products
+INNER JOIN product_groups USING (group_id)
+
+-- Notice: we added the frame clause RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING 
+-- because by default the frame clause is RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW.
+
+
+
 
