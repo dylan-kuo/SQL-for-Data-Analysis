@@ -26,7 +26,7 @@ You can restore the toy dataset  "parch and posey" to your local machines from t
 
 
 ---
-This repository also contains a sub-repo for my notes & practices for the PostgreSQL from other resources 
+This repo also contains a sub-repo for my notes & practices for the PostgreSQL from other resources 
 
 [PostgreSQL Notes & Practices (postgresqltutorial.com)](https://github.com/dylan-kuo/SQL-for-Data-Analysis/tree/master/postgresql-sandbox)
 
