@@ -1,6 +1,6 @@
 # SQL-for-Data-Analysis
 
-I'll use this repo to provide introduction to data analysis using SQL language (PostgreSQL), which should be a must tool for every data analyst/data scientist - both for getting access to data, but more interesting, as a simple tool for advanced data analysis. The logic behind SQL is very similar to any other tool or language that used for data analysis (excel or python pandas). 
+I'll use this repo to provide introduction to data analysis using SQL language (PostgreSQL), which should be a must tool for every data analyst/data scientist - both for getting access to data, but more interesting, as a simple tool for advanced data analysis. The logic behind SQL is very similar to any other tool or language that used for data analysis (excel or python pandas) . 
 
 
 This repository contains the practices for the SQL concepts taught in the course [SQL for Data Analysis](https://in.udacity.com/course/sql-for-data-analysis--ud198) by [MODE](https://modeanalytics.com) at [Udacity](http://udacity.com/).
