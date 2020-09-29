@@ -31,3 +31,7 @@ This repo also contains a sub-repo for my notes & practices for the PostgreSQL f
 [PostgreSQL Notes & Practices (postgresqltutorial.com)](https://github.com/dylan-kuo/SQL-for-Data-Analysis/tree/master/postgresql-sandbox)
 
 [Medium-Hard-Interview-Questions (shared by Zachary Thomas)](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/medium-hard-interview-questions.sql)
+
+[Other interview questions](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/interview_questions.sql)
+
+
