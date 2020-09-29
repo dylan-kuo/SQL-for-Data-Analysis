@@ -1,7 +1,10 @@
 /*
-Sample question: On many social network services (i.e. Twitter, Facebook, Quora, etc.), there is a way for a user to follow another account to hear their status updates. In particular, lots of users follow sport players. We want to understand how many users follow sport players.
+Sample question: On many social network services (i.e. Twitter, Facebook, Quora, etc.), there is a way for a user to follow another account to hear their status updates. 
+In particular, lots of users follow sport players. We want to understand how many users follow sport players.
 
-The schema: A table listing all the sport players' accounts of interest. 2nd table listing all of Instagram's users' basic information. 3rd table that logged all follows among accounts. (Follower_id and target_id are both referring user_id).
+The schema: A table listing all the sport players' accounts of interest. 
+            2nd table listing all of Instagram's users' basic information. 
+			3rd table that logged all follows among accounts. (Follower_id and target_id are both referring user_id).
 
 sport_accounts (
 user_name string, -- e.g. 'michaelphelps', 'peyton_manning'
