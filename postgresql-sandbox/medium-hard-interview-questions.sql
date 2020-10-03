@@ -276,3 +276,34 @@ FROM transactions
 ORDER BY date ASC
 
 
+
+/*
+#5: Rolling Averages
+
+*Acknowledgement:* This problem is adapted from Sisense’s 
+“Rolling Averages in MySQL and SQL Server”(https://www.sisense.com/blog/rolling-average/) blog post 
+
+*Note:* there are different ways to compute rolling/moving averages. 
+Here we'll use a preceding average which means that the metric for the 7th day of the month would be the average of the preceding 6 days and that day itself. 
+
+*Context*: Say we have table signups in the form: 
+
+| date       | sign_ups |
+|------------|----------|
+| 2018-01-01 | 10       |
+| 2018-01-02 | 20       |
+| 2018-01-03 | 50       |
+| ...        | ...      |
+| 2018-10-01 | 35       |
+
+*Task*: Write a query to get 7-day rolling (preceding) average of daily sign ups. 
+*/
+
+SELECT 
+    a.date,
+	AVG(b.sign_ups) average_sign_ups
+FROM signups a
+JOIN signups b 
+ON a.date <= b.date + interval '6 days' AND a.date >= b.date
+GROUP BY a.date
+
