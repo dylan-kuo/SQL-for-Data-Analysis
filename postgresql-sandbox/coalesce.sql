@@ -18,17 +18,17 @@ The COALESCE function provides the same functionality as NVL or IFNULL function 
 -- Firstly, we create table items and populate some records
 CREATE TABLE items (
     ID SERIAL PRIMARY KEY,
-	product VARCHAR(100) NOT NULL,
-	price NUMERIC NOT NULL,
-	discount NUMERIC
+    product VARCHAR(100) NOT NULL,
+    price NUMERIC NOT NULL,
+    discount NUMERIC
 );
 
 INSERT INTO items(product, price, discount)
 VALUES
     ('A', 1000, 10),
-	('B', 1500, 20),
-	('C', 800, 5),
-	('D', 500, NULL);
+    ('B', 1500, 20),
+    ('C', 800, 5),
+    ('D', 500, NULL);
 
 -- Second we query the net prices of the products using the following formula:
 -- net_price = price - discount
@@ -56,9 +56,9 @@ SELECT
       product,
 	  (
 	    price - CASE
-		             WHEN discount IS NULL THEN 0
-		             ELSE discount
-		        END
+		         WHEN discount IS NULL THEN 0
+		         ELSE discount
+		    END
 	  ) AS net_price
 FROM items;
 
