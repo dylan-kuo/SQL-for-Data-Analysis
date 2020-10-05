@@ -25,8 +25,8 @@ FROM ranks;
 SELECT 
       c,
       RANK() OVER (
-	         ORDER BY c
-	  ) rank_number
+	  ORDER BY c
+      ) rank_number
 FROM ranks;
 
 
@@ -38,11 +38,11 @@ We’ll use the products table to demonstrate the RANK() function:
 
 SELECT
       product_id, 
-	  product_name, 
-	  price,
+      product_name, 
+      price,
       RANK() OVER (
-	         ORDER BY price DESC
-	  )
+	  ORDER BY price DESC
+      )
 FROM products;
 
 
@@ -53,13 +53,13 @@ FROM products;
 
 SELECT
       product_id, 
-	  product_name, 
-	  group_name,
-	  price,
+      product_name, 
+      group_name,
+      price,
       RANK() OVER (
-		  PARTITION BY p.group_id
-	      ORDER BY price DESC
-	  ) price_rank
+          PARTITION BY p.group_id
+	  ORDER BY price DESC
+      ) price_rank
 FROM products p
 INNER JOIN product_groups g
   ON g.group_id = p.group_id; 
