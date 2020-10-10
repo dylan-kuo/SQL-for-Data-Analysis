@@ -44,5 +44,5 @@ EXISTS (SELECT 1 FROM tbl WHERE condition);
 SELECT first_name, last_name
 FROM customer
 WHERE EXISTS (SELECT 1 
-			  FROM payment 
-			  WHERE payment.customer_id = customer.customer_id);
+	      FROM payment 
+	      WHERE payment.customer_id = customer.customer_id);
