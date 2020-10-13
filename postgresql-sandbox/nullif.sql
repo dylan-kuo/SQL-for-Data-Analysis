@@ -24,7 +24,7 @@ SELECT
 
 -- First, we create a table 
 CREATE TABLE posts (
-    id SERIAL PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
 	title VARCHAR(255) NOT NULL,
 	excerpt VARCHAR(150),
 	body TEXT,
@@ -71,7 +71,7 @@ FROM posts;
 /* Use NULLIF to prevent division-by-zero error */
 -- First, we create a new table
 CREATE TABLE members (
-    id SERIAL PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
 	first_name VARCHAR(50) NOT NULL,
 	last_name VARCHAR(50) NOT NULL,
 	gender SMALLINT NOT NULL -- 1: male, 2: female
@@ -93,11 +93,11 @@ SELECT
       (SUM (
 	      CASE 
 		  WHEN gender = 1 THEN 1 ELSE 0
-		  END
+	      END
 	  ) / SUM (
 	      CASE
 		  WHEN gender = 2 THEN 1 ELSE 0
-		  END
+	      END
 	  )) * 100 AS "Male/Female ratio"
 FROM members;
 
@@ -122,12 +122,12 @@ SELECT
       (SUM(
 	      CASE 
 		  WHEN gender = 1 THEN 1 ELSE 0
-		  END
+	      END
 	  ) / NULLIF (
 	      SUM (
 		       CASE 
 			   WHEN gender = 2 THEN 1 ELSE 0
-			   END
+		       END
 		  ), 0
 	  )) * 100 AS "Male/Female ratio"
 
