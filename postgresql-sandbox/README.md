@@ -13,6 +13,7 @@ Topics:
 - [Coalesce](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/coalesce.sql)
 - [Common Table Expressions (CTE)](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/cte.sql)
 - [DISTINCT](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/distinct.sql)
+- [NULLIF](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/nullif.sql)
 - [Rank Function](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/rank.sql)
 - [Subquery](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/subquery.sql)
 - [Window Functions](https://github.com/dylan-kuo/SQL-for-Data-Analysis/blob/master/postgresql-sandbox/window_function.sql)
